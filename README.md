@@ -1,17 +1,16 @@
-# flutter_application_1
+# Tugas Pertemuan 8 - Implementasi Firebase Authentication
 
-A new Flutter project.
+Aplikasi mobile berbasis Flutter yang terintegrasi dengan layanan **Firebase Authentication** menggunakan metode Email & Password, dilengkapi halaman **SplashScreen** dan **Login**.
 
-## Getting Started
+## Identitas & Pembagian Task
+- **Fajar Islami** - Setup project Firebase, konfigurasi `firebase_options.dart`, integrasi `firebase_auth`, UI SplashScreen & Login.
+- *(Tambahkan nama anggota tim lain di sini jika berkelompok)*
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Langkah Integrasi Firebase
+1. Membuat project baru di **Firebase Console** (`myprojectfirebase-ca27e`).
+2. Mengaktifkan metode autentikasi **Email/Password** pada menu **Build > Authentication > Sign-in method**.
+3. Menambahkan akun pengguna uji coba pada tab **Users**.
+4. Menjalankan `flutterfire configure` untuk menghubungkan aplikasi Flutter dengan Firebase dan menghasilkan file `lib/firebase_options.dart`.
+5. Menambahkan package `firebase_core` dan `firebase_auth` pada `pubspec.yaml`.
+6. Menginisialisasi Firebase di `lib/main.dart` sebelum menjalankan aplikasi melalui `Firebase.initializeApp`.
+7. Membuat halaman `SplashScreen` (`lib/pages/splash_screen.dart`) dan `LoginPage` (`lib/pages/login_page.dart`) dengan `FirebaseAuth.instance.signInWithEmailAndPassword`.
