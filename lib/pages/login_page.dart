@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'home_page.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,6 +17,14 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword = true;
 
   Future<void> _login() async {
+    if (_emailController.text.trim().isEmpty ||
+        _passwordController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Email dan password wajib diisi!')),
+      );
+      return;
+    }
+
     setState(() {
       _isLoading = true;
     });
@@ -28,14 +38,21 @@ class _LoginPageState extends State<LoginPage> {
       if (!mounted) return;
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
+        barrierDismissible: false,
+        builder: (dialogContext) => AlertDialog(
           title: const Text('Login Success'),
           content: Text(
             'UID: ${credential.user?.uid}\nEmail: ${credential.user?.email}',
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
               child: const Text('OK'),
             ),
           ],
@@ -178,6 +195,18 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                       ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterPage(),
+                          ),
+                        );
+                      },
+                      child: const Text('Belum punya akun? Daftar di sini'),
                     ),
                   ],
                 ),
