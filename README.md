@@ -4,7 +4,6 @@ Aplikasi mobile berbasis Flutter yang terintegrasi dengan layanan **Firebase Aut
 
 ## Identitas & Pembagian Task
 - **Fajar Islami** - Setup project Firebase, konfigurasi `firebase_options.dart`, integrasi `firebase_auth`, UI SplashScreen & Login.
-- *(Tambahkan nama anggota tim lain di sini jika berkelompok)*
 
 ## Langkah Integrasi Firebase
 1. Membuat project baru di **Firebase Console** (`myprojectfirebase-ca27e`).
